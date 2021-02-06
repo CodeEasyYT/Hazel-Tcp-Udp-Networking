@@ -15,3 +15,5 @@ If anyone interesed on the entire project, please tell me!
  - Connecting to server
  - Communicating
  - Server sided disconnections
+
+#### If you are also wondering, yes i will release a wiki showing you how to use it and switch udp to tcp
