@@ -17,3 +17,4 @@ If anyone interesed on the entire project, please tell me!
  - Server sided disconnections
 
 #### If you are also wondering, yes i will release a wiki showing you how to use it and switch udp to tcp
+#### Which is worse but services like [Ngrok](https://ngrok.com/) can be used.
