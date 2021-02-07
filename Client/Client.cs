@@ -65,7 +65,9 @@ public class Client : MonoBehaviour
     {
         dataReceiveHandler = new Dictionary<int, OnDataReceived>
         {
-            { (int)ClientReceive.ClientId, ClientHandle.OnIdReceived }
+            { (int)ClientReceive.ClientId, ClientHandle.OnIdReceived },
+            { (int)ClientReceive.SpawnPlayer, ClientHandle.OnSpawnPlayer },
+            { (int)ClientReceive.PlayerMovement, ClientHandle.OnPlayerMove }
         };
     }
 

@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 public enum ServerSend
 {
-    ClientId = 0
+    ClientId = 0,
+    SpawnPlayer,
+    PlayerMovement
 }
 
 public enum ServerReceive
 {
-    Test = 0
+    PlayerMovement = 0
 }
 
 public class Packet : IDisposable
@@ -130,6 +133,19 @@ public class Packet : IDisposable
     {
         Write(_value.Length); // Add the length of the string to the packet
         buffer.AddRange(Encoding.ASCII.GetBytes(_value)); // Add the string itself
+    }
+    public void Write(Vector3 _value)
+    {
+        Write(_value.x);
+        Write(_value.y);
+        Write(_value.z);
+    }
+    public void Write(Quaternion _value)
+    {
+        Write(_value.x);
+        Write(_value.y);
+        Write(_value.z);
+        Write(_value.w);
     }
     #endregion
 
@@ -300,6 +316,39 @@ public class Packet : IDisposable
         catch
         {
             throw new Exception("Could not read value of type 'string'!");
+        }
+    }
+
+    public Vector3 ReadVector3(bool _moveReadPos = true)
+    {
+        try
+        {
+            float x = ReadFloat(_moveReadPos);
+            float y = ReadFloat(_moveReadPos);
+            float z = ReadFloat(_moveReadPos);
+
+            return new Vector3(x, y, z);
+        }
+        catch
+        {
+            throw new Exception("Could not read value of type 'Vector3'!");
+        }
+    }
+
+    public Quaternion ReadQuaternion(bool _moveReadPos = true)
+    {
+        try
+        {
+            float x = ReadFloat(_moveReadPos);
+            float y = ReadFloat(_moveReadPos);
+            float z = ReadFloat(_moveReadPos);
+            float w = ReadFloat(_moveReadPos);
+
+            return new Quaternion(x, y, z, w);
+        }
+        catch
+        {
+            throw new Exception("Could not read value of type 'Quaternion'!");
         }
     }
     #endregion

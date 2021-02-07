@@ -1,10 +1,15 @@
 ﻿using Hazel;
+using UnityEngine;
 
+// TODO: Remove
+[System.Serializable]
 public class Client
 {
     public int id;
     public bool isEmpty;
     public Connection connection;
+
+    public Player player;
 
     public Client()
     {
@@ -20,11 +25,28 @@ public class Client
 
         connection.Disconnected += Connection_Disconnected;
         connection.DataReceived += Connection_DataReceived;
+
+        ThreadManager.ExecuteOnMainThread(() =>
+        {
+            player = NetworkManager.Instance.SpawnPlayer(Vector3.zero);
+            player.Initialize(id);
+        });
     }
 
     public void Ready()
     {
         ServerSender.SendClientsId(id);
+
+        ThreadManager.ExecuteOnMainThread(() =>
+        {
+            ServerSender.NewClientJoined(id, player.transform.position);
+
+            for (int i = 0; i < Server.Instance.clients.Count; i++)
+            {
+                if (!Server.Instance.clients[i].isEmpty && i != id)
+                    ServerSender.NewClientSendToNewlyJoinedClient(i, id);
+            }
+        });
     }
 
     private void Connection_DataReceived(object sender, DataReceivedEventArgs e)
@@ -42,6 +64,22 @@ public class Client
 
     public void KillMyself()
     {
+        ThreadManager.ExecuteOnMainThread(() =>
+        {
+            Object.Destroy(player.gameObject);
+        });
+    }
 
+    public void Update()
+    {
+        Debug.Log("Update");
+        try
+        {
+            ServerSender.PlayerPosition(id);
+        }
+        catch(System.Exception ex)
+        {
+            Debug.LogError(ex);
+        }
     }
 }

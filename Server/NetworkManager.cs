@@ -18,4 +18,11 @@ public class NetworkManager : MonoBehaviour
             Destroy(this);
         }
     }
+
+    public Player SpawnPlayer(Vector3 position)
+    {
+        Player newPlayer;
+        newPlayer = Instantiate(clientPrefab, position, Quaternion.identity).GetComponent<Player>();
+        return newPlayer;
+    }
 }

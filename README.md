@@ -7,14 +7,15 @@ If anyone interesed on the entire project, please tell me!
 
 ### To-Dos
  - Implement Server Sided Player Collision and Movement (probably will scrapped later)
- - Make clients know each other
- - Send client movement updates to the others
- - Handle client disconnection with telling others
+ - Send client movement updates to the others (Client Sided)
 
 ### Done
  - Connecting to server
  - Communicating
  - Server sided disconnections
+ - Handle client disconnection with telling others
+ - Send client movement updates to the others (Server Sided)
+ - Make clients know each other
 
 #### If you are also wondering, yes i will release a wiki showing you how to use it and switch udp to tcp
 #### Which is worse but services like [Ngrok](https://ngrok.com/) can be used.
