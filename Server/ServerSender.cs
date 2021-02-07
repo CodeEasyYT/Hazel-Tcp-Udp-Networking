@@ -95,4 +95,14 @@ public static class ServerSender
             SendUDPUnreliableDataToAll(_packet, _id);
         }
     }
+
+    public static void ClientDisconnected(int _id)
+    {
+        using (Packet _packet = new Packet((int)ServerSend.ClientDisconnect))
+        {
+            _packet.Write(_id);
+
+            SendUDPReliableDataToAll(_packet, _id);
+        }
+    }
 }

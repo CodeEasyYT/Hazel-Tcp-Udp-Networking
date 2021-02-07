@@ -1,8 +1,8 @@
 ﻿using Hazel;
+//using Hazel.Tcp;
 using Hazel.Udp;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class Client : MonoBehaviour
@@ -28,20 +28,16 @@ public class Client : MonoBehaviour
     public int id;
 
     private bool isConnected;
+    //public TcpConnection connection;
     public UdpConnection connection;
 
     public delegate void OnDataReceived(Packet _packet);
     public Dictionary<int, OnDataReceived> dataReceiveHandler;
 
-    private void Start()
-    {
-        Thread connectThread = new Thread(new ThreadStart(Connect));
-        connectThread.Start();
-    }
-
     public void Connect()
     {
         connection = new UdpClientConnection(new NetworkEndPoint(ip, port));
+        //connection = new TcpConnection(new NetworkEndPoint(ip, port));
 
         connection.Disconnected += Disconnected;
         connection.DataReceived += Connection_DataReceived;
@@ -67,7 +63,8 @@ public class Client : MonoBehaviour
         {
             { (int)ClientReceive.ClientId, ClientHandle.OnIdReceived },
             { (int)ClientReceive.SpawnPlayer, ClientHandle.OnSpawnPlayer },
-            { (int)ClientReceive.PlayerMovement, ClientHandle.OnPlayerMove }
+            { (int)ClientReceive.PlayerMovement, ClientHandle.OnPlayerMove },
+            { (int)ClientReceive.ClientDisconnect, ClientHandle.OnClientDisconnected }
         };
     }
 

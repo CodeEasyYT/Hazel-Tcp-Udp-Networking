@@ -30,4 +30,14 @@ public static class ClientHandle
             GameManager.Instance.players[_id].transform.rotation = _rotation;
         });
     }
+
+    public static void OnClientDisconnected(Packet _packet)
+    {
+        int _id = _packet.ReadInt();
+
+        ThreadManager.ExecuteOnMainThread(() =>
+        {
+            GameManager.Instance.DespawnPlayer(_id);
+        });
+    }
 }

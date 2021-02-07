@@ -71,6 +71,8 @@ public class Client
             Object.Destroy(player.gameObject);
         });
 
+        ServerSender.ClientDisconnected(id);
+
         waitingToBeKilled = true;
     }
 

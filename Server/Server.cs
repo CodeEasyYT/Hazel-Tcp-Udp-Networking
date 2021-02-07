@@ -1,5 +1,6 @@
 ﻿using Hazel;
 using Hazel.Udp;
+//using Hazel.Tcp;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -26,6 +27,7 @@ public class Server : MonoBehaviour
     private int maxPlayers;
     private bool isConnected = false;
 
+    //public TcpConnectionListener connection;
     public UdpConnectionListener connection;
 
     public List<Client> clients;
@@ -42,6 +44,7 @@ public class Server : MonoBehaviour
 
 #pragma warning disable CS0618 // Tür veya üye artık kullanılmıyor
         connection = new UdpConnectionListener(IPAddress.Any, this.port);
+        //connection = new TcpConnectionListener(IPAddress.Any, this.port);
 #pragma warning restore CS0618 // Tür veya üye artık kullanılmıyor
 
         connection.NewConnection += NewConnection;

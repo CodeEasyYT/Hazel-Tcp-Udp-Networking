@@ -7,7 +7,8 @@ public enum ClientReceive
 {
     ClientId = 0,
     SpawnPlayer,
-    PlayerMovement
+    PlayerMovement,
+    ClientDisconnect
 }
 
 public enum ClientSend

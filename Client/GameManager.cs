@@ -38,4 +38,10 @@ public class GameManager : MonoBehaviour
         _player.GetComponent<PlayerManager>().Initialize(_id);
         players.Add(_id, _player.GetComponent<PlayerManager>());
     }
+
+    public void DespawnPlayer(int _id)
+    {
+        Destroy(players[_id].gameObject);
+        players.Remove(_id);
+    }
 }
