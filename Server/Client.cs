@@ -7,6 +7,7 @@ public class Client
 {
     public int id;
     public bool isEmpty;
+    public bool isClientReady;
     public Connection connection;
 
     public Player player;
@@ -24,6 +25,7 @@ public class Client
 
         this.connection = connection;
         isEmpty = false;
+        isClientReady = false;
 
         connection.Disconnected += Connection_Disconnected;
         connection.DataReceived += Connection_DataReceived;
@@ -49,6 +51,8 @@ public class Client
                     ServerSender.NewClientSendToNewlyJoinedClient(i, id);
             }
         });
+
+        isClientReady = true;
     }
 
     private void Connection_DataReceived(object sender, DataReceivedEventArgs e)
@@ -78,7 +82,7 @@ public class Client
 
     public void Update()
     {
-        if (waitingToBeKilled)
+        if (waitingToBeKilled || !isClientReady)
             return;
 
         try
