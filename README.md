@@ -18,4 +18,4 @@ If anyone interesed on the entire project, please tell me!
 
 #### If you are also wondering, yes i will release a wiki showing you how to use it and switch udp to tcp, which is worse but services like [Ngrok](https://ngrok.com/) can be used.
 
-#### Also just so you know that this project is done, and it will probably not receive any updates from now on. Unless someone tells me that they need help or changes needed to have.
+#### Also just so you know that this project is somewhat done, and it will probably not receive any updates from now on. Unless someone tells me that they need help or changes needed to have.
