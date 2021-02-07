@@ -22,10 +22,12 @@ public static class ClientHandle
     {
         int _id = _packet.ReadInt();
         Vector3 _position = _packet.ReadVector3();
+        Quaternion _rotation = _packet.ReadQuaternion();
 
         ThreadManager.ExecuteOnMainThread(() =>
         {
             GameManager.Instance.players[_id].transform.position = _position;
+            GameManager.Instance.players[_id].transform.rotation = _rotation;
         });
     }
 }

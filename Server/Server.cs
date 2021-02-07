@@ -72,7 +72,7 @@ public class Server : MonoBehaviour
     {
         dataReceiveHandler = new Dictionary<int, OnDataReceived>
         {
-
+            { (int)ServerReceive.PlayerMovement, ServerHandler.PlayerPosition }
         };
     }
 

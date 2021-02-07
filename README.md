@@ -6,15 +6,14 @@ It's still work in progress, and i will just share the code.
 If anyone interesed on the entire project, please tell me!
 
 ### To-Dos
- - Implement Server Sided Player Collision and Movement (probably will scrapped later)
- - Send client movement updates to the others (Client Sided)
+ - None planned currently
 
 ### Done
  - Connecting to server
  - Communicating
  - Server sided disconnections
  - Handle client disconnection with telling others
- - Send client movement updates to the others (Server Sided)
+ - Send client movement updates to the others
  - Make clients know each other
 
 #### If you are also wondering, yes i will release a wiki showing you how to use it and switch udp to tcp

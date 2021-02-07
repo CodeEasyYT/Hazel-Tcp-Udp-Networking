@@ -11,6 +11,8 @@ public class Client
 
     public Player player;
 
+    private bool waitingToBeKilled = false;
+
     public Client()
     {
         isEmpty = true;
@@ -68,11 +70,15 @@ public class Client
         {
             Object.Destroy(player.gameObject);
         });
+
+        waitingToBeKilled = true;
     }
 
     public void Update()
     {
-        Debug.Log("Update");
+        if (waitingToBeKilled)
+            return;
+
         try
         {
             ServerSender.PlayerPosition(id);

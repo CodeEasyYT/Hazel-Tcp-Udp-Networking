@@ -10,7 +10,6 @@ public enum ClientReceive
     PlayerMovement
 }
 
-// TODO: Not used yet
 public enum ClientSend
 {
     PlayerMovement = 0

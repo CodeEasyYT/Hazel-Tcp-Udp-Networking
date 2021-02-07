@@ -90,8 +90,9 @@ public static class ServerSender
         {
             _packet.Write(_id);
             _packet.Write(Server.Instance.clients[_id].player.transform.position);
+            _packet.Write(Server.Instance.clients[_id].player.transform.rotation);
 
-            SendUDPUnreliableDataToAll(_packet);
+            SendUDPUnreliableDataToAll(_packet, _id);
         }
     }
 }
