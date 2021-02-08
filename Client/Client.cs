@@ -1,5 +1,5 @@
 ﻿using Hazel;
-//using Hazel.Tcp;
+using Hazel.Tcp;
 using Hazel.Udp;
 using System;
 using System.Collections.Generic;
@@ -45,19 +45,22 @@ public class Client : MonoBehaviour
     {
         try
         {
+            IPAddress.Parse(ip);
             GenerateConnection(ip);
         }
-        catch (System.Exception ex)
+        catch (Exception ex)
         {
             try
             {
-                Debug.Log("Resolving ip...")
-                ip = Dns.GetHostAddresses(ip)[0];
+                Debug.Log("Resolving ip...");
+                ip = Dns.GetHostAddresses(ip)[0].ToString();
+                Debug.Log("Resolved IP: " + ip);
                 GenerateConnection(ip);
             }
-            catch (System.Exception ex)
+            catch
             {
                 Debug.LogError("Error resolving ip!");
+                return;
             }
         }
 
