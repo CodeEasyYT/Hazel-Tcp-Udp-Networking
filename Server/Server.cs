@@ -25,7 +25,6 @@ public class Server : MonoBehaviour
 
     private int port;
     private int maxPlayers;
-    private bool isConnected = false;
 
     //public TcpConnectionListener connection;
     public UdpConnectionListener connection;
@@ -66,7 +65,6 @@ public class Server : MonoBehaviour
         Debug.Log("Server starting...");
 
         connection.Start();
-        isConnected = true;
 
         Debug.Log("Server started!");
     }

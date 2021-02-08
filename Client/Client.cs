@@ -1,9 +1,10 @@
 ﻿using Hazel;
-//using Hazel.Tcp;
+using Hazel.Tcp;
 using Hazel.Udp;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Net;
 
 public class Client : MonoBehaviour
 {
@@ -34,10 +35,34 @@ public class Client : MonoBehaviour
     public delegate void OnDataReceived(Packet _packet);
     public Dictionary<int, OnDataReceived> dataReceiveHandler;
 
+    private void GenerateConnection(string server)
+    {
+        connection = new UdpClientConnection(new NetworkEndPoint(server, port));
+        //connection = new TcpConnection(new NetworkEndPoint(server, port));
+    }
+
     public void Connect()
     {
-        connection = new UdpClientConnection(new NetworkEndPoint(ip, port));
-        //connection = new TcpConnection(new NetworkEndPoint(ip, port));
+        try
+        {
+            IPAddress.Parse(ip);
+            GenerateConnection(ip);
+        }
+        catch (Exception ex)
+        {
+            try
+            {
+                Debug.Log("Resolving ip...");
+                ip = Dns.GetHostAddresses(ip)[0].ToString();
+                Debug.Log("Resolved IP: " + ip);
+                GenerateConnection(ip);
+            }
+            catch
+            {
+                Debug.LogError("Error resolving ip!");
+                return;
+            }
+        }
 
         connection.Disconnected += Disconnected;
         connection.DataReceived += Connection_DataReceived;
