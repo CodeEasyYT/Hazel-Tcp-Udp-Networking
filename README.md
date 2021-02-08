@@ -1,9 +1,6 @@
-# Hazel Tcp-Udp-Networking
+# You are entering to EXPERIMENTAL BRANCH!
 
-This is the recreation of [Tom Weiland/Tcp-Udp-Networking/Part-5](https://github.com/tom-weiland/tcp-udp-networking/tree/tutorial-part5) in [Hazel](https://github.com/willardf/Hazel-Networking)
-
-It's still work in progress, and i will just share the code.
-If anyone interesed on the entire project, please tell me!
+Just do you know that these extra codes in here might not work!
 
 ### To-Dos
  - None planned currently
@@ -15,6 +12,8 @@ If anyone interesed on the entire project, please tell me!
  - Handle client disconnection with telling others
  - Send client movement updates to the others
  - Make clients know each other
+
+#### Also check out [Main](https://github.com/CodeEasyYT/Hazel-Tcp-Udp-Networking) for less experimental code.
 
 #### If you are also wondering, yes i will release a wiki showing you how to use it and switch udp to tcp, which is worse but services like [Ngrok](https://ngrok.com/) can be used.
 
