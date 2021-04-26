@@ -1,6 +1,6 @@
 # Hazel Tcp-Udp-Networking
 
-This is the recreation of [Tom Weiland/Tcp-Udp-Networking/Part-5](https://github.com/tom-weiland/tcp-udp-networking/tree/tutorial-part5) in [Hazel](https://github.com/willardf/Hazel-Networking)
+This is the recreation of [Tom Weiland/Tcp-Udp-Networking/Part-6](https://github.com/tom-weiland/tcp-udp-networking/tree/tutorial-part6) in [Hazel](https://github.com/willardf/Hazel-Networking)
 
 It's still work in progress, and i will just share the code.
 If anyone interesed on the entire project, please tell me!
